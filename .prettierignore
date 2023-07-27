@@ -1,0 +1,8 @@
+.github
+.husky
+.next
+.storybook
+.swc
+.vscode
+cypress
+docs

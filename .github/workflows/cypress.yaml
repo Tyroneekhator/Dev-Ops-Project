@@ -1,0 +1,26 @@
+name: E2E on Chrome
+
+on: [push, pull_request]
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v3
+        with:
+          browser: chrome
+          build: npm run build
+          start: npm run start
+          wait-on: "http://localhost:3000"
+        env:
+          MONGODB_URI: "mongodb+srv://admin:admin@com619devops.vge7bw9.mongodb.net/test_recipes?retryWrites=true&w=majority"
+          SENTRY_AUTH_TOKEN: "a4c2891f056c4e49a30311259e38f476b7ed1ddde50d49fab220a30d842f96a5"
+          NEXT_AUTH_URL: "https://localhost:3000/api/auth/session"
+          NEXT_PUBLIC_TESTING: true
+          NEXTAUTH_SECRET: "sgdwaydgauwdgkjdwda"
+          GITHUB_ID: "674e0eac925dae01aa19"
+          GITHUB_SECRET: "548e6f191b0d12b3fd917f6ec9885b647eaa60cd"
